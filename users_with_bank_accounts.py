@@ -41,12 +41,18 @@ class User:
         self.email = email
         self.account = Bank_account(interest_rate = 0.02, balance = 0)
     
-    # Add a make_deposit method to the User class that calls on its bank account's instance methods.
+    def user_account_infos(self):
+        self.account.display_account_info()
+        return self
+    
     def make_deposit(self, amount):
         self.account.deposit(amount)
         return self
 
     # Add a make_withdrawal method to the User class that calls on its bank account's instance methods.
+    def make_withdrawal(self, amount):
+        self.account.withdrawal(amount)
+        return self
 
     # Add a display_user_balance method to the User class that displays user's account balance
 
@@ -54,5 +60,5 @@ class User:
 
     # SENPAI BONUS: Add a transfer_money(self, amount, other_user) method to the user class that takes an amount and a different User instance, and transfers money from the user's account into another user's account.
 user_1 = User('Rassim Benmhamed', 'rassimb@codingdojo.com')
-user_1.make_deposit(100)
+user_1.make_deposit(100).make_withdrawal(50).user_account_infos()
 
